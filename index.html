@@ -3,55 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добро пожаловать | spoof1xz</title>
+    <title>Spoof1x Development</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Orbitron', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
-            color: #ffffff;
+            background-color: #000;
+            color: #fff;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .grid-bg {
+            position: fixed;
+            width: 300%;
+            height: 300%;
+            top: -100%;
+            left: -100%;
+            background: 
+                linear-gradient(rgba(64,224,208,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(64,224,208,0.07) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: rotate(45deg);
+            animation: grid-move 15s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: rotate(45deg) translateY(0); }
+            100% { transform: rotate(45deg) translateY(-50px); }
+        }
+
+        .container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 4em;
+            text-align: center;
+            margin-bottom: 60px;
+            color: transparent;
+            -webkit-text-stroke: 2px #40E0D0;
+            text-shadow: 0 0 20px rgba(64,224,208,0.5);
+            overflow: hidden;
+            border-right: 2px solid #40E0D0;
+            white-space: nowrap;
+            margin: 0 auto 60px;
+            width: fit-content;
+            animation: typing 3.5s steps(30, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #40E0D0 }
+        }
+
+        .services {
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            position: relative;
+            background: #000;
+            padding: 3px;
+            width: 280px;
             text-align: center;
+            border-radius: 15px;
+            box-shadow: none;
         }
-        .container {
-            padding: 20px;
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #40E0D0, #00CED1, #40E0D0);
+            border-radius: 16px;
+            z-index: -1;
+            animation: borderRotate 4s linear infinite;
         }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #00ff88;
+
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
         }
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .social-links {
-            margin-top: 20px;
-        }
-        .social-links a {
-            color: #00ff88;
+
+        .service-card-content {
+            background: rgba(0,0,0,0.7);
+            padding: 30px;
+            border-radius: 13px;
             text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.1em;
+            display: block;
         }
+
+        .service-card h3 {
+            color: #40E0D0;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 2em;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .price span {
+            color: #40E0D0;
+        }
+
+        .social-links {
+            margin-top: 60px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-links img {
+            width: 30px;
+            height: 30px;
+            filter: invert(89%) sepia(71%) saturate(757%) hue-rotate(165deg) brightness(104%) contrast(104%);
+        }
+
+        .social-links a {
+            color: #40E0D0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 2.5em;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(0,0,0,0.3);
+        }
+
         .social-links a:hover {
-            text-decoration: underline;
+            transform: translateY(-5px);
+            filter: brightness(1.2);
+        }
+
+        .service-card-content a {
+            text-decoration: none;
+            color: #40E0D0;
+            margin-top: 15px;
+            display: block;
+            padding: 10px;
+            border: 1px solid #40E0D0;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .service-card-content a:hover {
+            background: #40E0D0;
+            color: #000;
         }
     </style>
 </head>
 <body>
+    <div class="grid-bg"></div>
     <div class="container">
-        <h1>spoof1xz</h1>
-        <p>Привет! Добро пожаловать на мой сайт.</p>
-        <p>Я увлекаюсь программированием и созданием крутых проектов.</p>
+        <h1 class="title">SPOOF1X DEV</h1>
+        
+        <div class="services">
+            <div class="service-card">
+                <a href="https://t.me/sp1fx?text=Привет!%20Хочу%20заказать%20способность%20из%20Dota%202" class="service-card-content">
+                    <h3>DOTA 2 SKILLS</h3>
+                    <div class="price">350<span>₽+</span></div>
+                </a>
+            </div>
+
+            <div class="service-card">
+                <a href="https://t.me/sp1fx?text=Привет!%20Интересует%20разработка%20Panorama%20UI" class="service-card-content">
+                    <h3>PANORAMA UI</h3>
+                    <div class="price">1.5<span>K₽+</span></div>
+                </a>
+            </div>
+
+            <div class="service-card">
+                <a href="https://t.me/sp1fx?text=Привет!%20Нужна%20разработка%20серверной%20части" class="service-card-content">
+                    <h3>SERVER SIDE</h3>
+                    <div class="price">700<span>₽+</span></div>
+                </a>
+            </div>
+        </div>
+
         <div class="social-links">
-            <a href="https://github.com/spoof1xz" target="_blank">GitHub</a>
-            <a href="mailto:contact@spoof1xz.com">Связаться со мной</a>
+            <a href="https://t.me/sp1fx" target="_blank">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/telegram.svg" alt="Telegram">
+            </a>
+            <a href="https://discord.com/users/904449099242278942" target="_blank">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/discord.svg" alt="Discord">
+            </a>
         </div>
     </div>
 </body>
